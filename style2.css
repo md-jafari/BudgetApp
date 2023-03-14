@@ -39,18 +39,24 @@ header{
     background-color: white;
 }
 
-input, select {
+.input-container input {
     padding: 5%;
     margin-top: 1%;
     border-radius: 7px;
 }
-button {
+
+.input-container select{
+    padding: 5%;
+    margin-top: 1%;
+    border-radius: 7px;
+}
+.input-container button {
     padding: 3%;
     width: 40%;
     margin-top: 10%;
     margin-bottom: 2%;
     background-color: rgb(66, 141, 253);
-    border-radius: 13px;
+    border-radius: 7px;
 }
 
 .budget-container h2 {
@@ -61,3 +67,38 @@ button {
 
     margin-bottom: 5%;
 }
+
+
+#filter-container {
+    border-radius: 7px;
+    background-color: white;
+    padding: 3%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#filter-container input{
+    margin-left: 1%;
+    padding: 5px;
+    width: 25%;
+    border-radius: 7px;
+}
+
+#filter-container label{
+    margin-left: 1%;
+    border-radius: 7px;
+}
+
+#filter-container select{
+    margin-left: 1%;
+    border-radius: 7px;
+}
+
+#filter-container button{
+    margin-left: 1%;
+    background-color: rgb(66, 141, 253);
+    border-radius: 7px;
+}
+
