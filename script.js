@@ -4,4 +4,4 @@ const app = Vue.createApp({
           name: 'Mohammed'
         }
     }
-}).mount('#app');
+}).mount('.app');
