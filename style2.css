@@ -1,27 +1,30 @@
-*{
- box-sizing: border-box;
- margin: 0;
- padding: 0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    background-color:rgb(250, 237, 220)
+body {
+    background-color: rgb(250, 237, 220)
 }
-header{
+
+header {
     text-align: center;
 }
-.app {
+
+#app {
     width: 90%;
     font-size: 20px;
     max-width: 60rem;
     margin: 1em auto;
 }
+
 .input-container {
     display: flex;
     flex-direction: row;
 }
 
-.budget-container{
+.budget-container {
     display: flex;
     flex-direction: column;
     width: 45%;
@@ -29,7 +32,8 @@ header{
     border-radius: 10px;
     background-color: white;
 }
-.expense-container{
+
+.expense-container {
     display: flex;
     flex-direction: column;
     width: 45%;
@@ -45,11 +49,12 @@ header{
     border-radius: 7px;
 }
 
-.input-container select{
+.input-container select {
     padding: 5%;
     margin-top: 1%;
     border-radius: 7px;
 }
+
 .input-container button {
     padding: 3%;
     width: 40%;
@@ -63,6 +68,7 @@ header{
 
     margin-bottom: 5%;
 }
+
 .expense-container h2 {
 
     margin-bottom: 5%;
@@ -79,26 +85,30 @@ header{
     justify-content: center;
 }
 
-#filter-container input{
+#filter-container input {
     margin-left: 1%;
     padding: 5px;
     width: 25%;
     border-radius: 7px;
 }
 
-#filter-container label{
+#filter-container label {
     margin-left: 1%;
     border-radius: 7px;
 }
 
-#filter-container select{
+#filter-container select {
     margin-left: 1%;
     border-radius: 7px;
 }
 
-#filter-container button{
+#filter-container button {
     margin-left: 1%;
     background-color: rgb(66, 141, 253);
     border-radius: 7px;
 }
 
+
+footer {
+    text-align: center;
+}

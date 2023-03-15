@@ -1,4 +1,4 @@
-const app = Vue.createApp({
+Vue.createApp({
   data() {
     return {
       budget: [],
@@ -10,10 +10,10 @@ const app = Vue.createApp({
     }
   },
   methods: {
-    addBudget(){
+    addBudget() {
       return this.income + 10;
     },
-    addExpense(){
+    addExpense() {
 
     }
 
