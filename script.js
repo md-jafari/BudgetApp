@@ -1,48 +1,42 @@
 const app = Vue.createApp({
-    data() {
-        return{
-          expenses: [],
-          incomes: [],
+  data() {
+    return {
+      expenses: [],
+      incomes: [],
 
-          expenseID: 0,
-          titel: '',
-          amount: 0,
-          expenseDate: Date.now,
-          expenseCategory: '',
+      titel: '',
+      amount: 0,
+      expenseDate: null,
+      expenseCategory: '',
 
-          incomeID: 0,
-          income: 0,
-          incomeDate: Date.now
-
-        }
-    },
-    methods: {
-
-      addExpense() {
-        if(this.expenses.titel.trim() === ''){
-          return;
-        }
-        let expenseObject = {
-          expenseID: this.expenseID,
-          titel: this.titel,
-          amount: this.amount,
-          expenseDate: this.expenseDate,
-          expenseCategory: this.expenseCategory
-        }
-        this.expenses.push(expenseObject);
-        this.expenseID++;
-      },
-      addIncome(){
-        let incomeObject= {
-          incomeID: this.incomeID,
-          income: this.income,
-          oncomeDate: this.incomeDate
-        }
-
-        this.incomes.push(incomeObject);
-        this.incomeID++;
-
-      }
+      income: 0,
+      incomeDate: null
 
     }
+  },
+  methods: {
+
+    addIncome() {
+      let incomeObject = {
+        income: this.income,
+        incomeDate: this.incomeDate
+      }
+
+      this.incomes.push(incomeObject);
+    },
+    addExpense() {
+      if (this.expenses.titel.trim() === '') {
+        return;
+      }
+      let expenseObject = {
+        titel: this.titel,
+        amount: this.amount,
+        expenseDate: this.expenseDate,
+        expenseCategory: this.expenseCategory
+      }
+      this.expenses.push(expenseObject);
+    },
+    
+
+  }
 }).mount('#app');

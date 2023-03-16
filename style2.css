@@ -5,7 +5,8 @@
 }
 
 body {
-    background-color: rgb(250, 237, 220)
+    background-color: rgb(250, 237, 220);
+    font-family: 'Oleo Script', cursive;
 }
 
 header {
@@ -134,4 +135,10 @@ header {
 
 .text-container span {
     font-weight: bold;
+}
+
+footer{
+    font-size: 12px;
+    text-align: center;
+    padding: 20px;
 }
