@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expense-tracking application to get hold of your economy">
     <title>Budget Application</title>
     <link rel="stylesheet" href="style2.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="script.js" defer></script>
 </head>
+
 <body>
     <header>
-        <h1>Budget Calculation</h1>
+        <h1>Budget tracker</h1>
     </header>
 
     <main>
@@ -60,30 +64,35 @@
             <div id="filter-container" style="display: none;">
                 <label for="start-date">start:  </label>
                 <input id="start-date" type="date">
-                    
-                <label for="end-date">end:  </label>
+
+                <label for="end-date">end: </label>
                 <input id="end-date" type="date">
-                    
+
                 <select name="category" id="gategory">
-                        <option value="" disabled selected hidden>choose a category</option>
-                        <option value="Groceries">Food</option>
-                        <option value="Rent">Rent</option>
-                        <option value="Transport">Transport</option>
+                    <option value="" disabled selected hidden>choose a category</option>
+                    <option value="Groceries">Food</option>
+                    <option value="Rent">Rent</option>
+                    <option value="Transport">Transport</option>
                 </select>
                 <button>search</button>
             </div>
-            
+
             <div>
                 <ul>
-                
+
                 </ul>
 
             </div>
-            
+
+            <footer>
+                <p>
+                    © 2023 Jafari & Abdi. All rights reserved.
+                </p>
+            </footer>
+
 
         </div>
     </main>
-    <script src="https://unpkg.com/vue@next"></script>
-    <script src="script.js"></script>
-</body>         
+</body>
+
 </html>

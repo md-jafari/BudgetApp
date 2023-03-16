@@ -1,13 +1,14 @@
-*{
- box-sizing: border-box;
- margin: 0;
- padding: 0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    background-color:rgb(250, 237, 220)
+body {
+    background-color: rgb(250, 237, 220)
 }
-header{
+
+header {
     text-align: center;
     margin-top: 1em;
 }
@@ -78,24 +79,24 @@ header{
     justify-content: center;
 }
 
-#filter-container input{
+#filter-container input {
     margin-left: 1%;
     padding: 5px;
     width: 25%;
     border-radius: 7px;
 }
 
-#filter-container label{
+#filter-container label {
     margin-left: 1%;
     border-radius: 7px;
 }
 
-#filter-container select{
+#filter-container select {
     margin-left: 1%;
     border-radius: 7px;
 }
 
-#filter-container button{
+#filter-container button {
     margin-left: 1%;
     background-color: rgb(66, 141, 253);
     border-radius: 7px;
