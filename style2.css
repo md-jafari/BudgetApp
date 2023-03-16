@@ -9,19 +9,20 @@ body{
 }
 header{
     text-align: center;
+    margin-top: 1em;
 }
-.app {
+#app {
     width: 90%;
     font-size: 20px;
     max-width: 60rem;
     margin: 1em auto;
 }
-.input-container {
+#input-container {
     display: flex;
     flex-direction: row;
 }
 
-.budget-container{
+.budget-form{
     display: flex;
     flex-direction: column;
     width: 45%;
@@ -29,7 +30,7 @@ header{
     border-radius: 10px;
     background-color: white;
 }
-.expense-container{
+.expense-form{
     display: flex;
     flex-direction: column;
     width: 45%;
@@ -39,18 +40,18 @@ header{
     background-color: white;
 }
 
-.input-container input {
+#input-container input {
     padding: 5%;
     margin-top: 1%;
     border-radius: 7px;
 }
 
-.input-container select{
+#input-container select{
     padding: 5%;
     margin-top: 1%;
     border-radius: 7px;
 }
-.input-container button {
+#input-container button {
     padding: 3%;
     width: 40%;
     margin-top: 10%;
@@ -59,12 +60,10 @@ header{
     border-radius: 7px;
 }
 
-.budget-container h2 {
-
+.budget-form h2 {
     margin-bottom: 5%;
 }
-.expense-container h2 {
-
+.expense-form h2 {
     margin-bottom: 5%;
 }
 
@@ -102,3 +101,36 @@ header{
     border-radius: 7px;
 }
 
+#net-container{
+    background-color: white;
+    margin-top: 5%;
+    padding: 3%;
+    text-align: center;
+    border-radius: 7px;
+}
+.text-container {
+    display: grid;
+    grid-template:
+       'a b c' ;
+}
+
+.button-container {
+    display: grid;
+    grid-template: 
+        'a b c';
+        padding-top: 5%;
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+.button-container button {
+
+    background-color: white;
+    border: none;
+    
+}
+
+.text-container span {
+    font-weight: bold;
+}
