@@ -49,6 +49,10 @@ const app = Vue.createApp({
         totalExpense += parseInt(expense.expense);
       }
       return totalExpense;
+    },
+    displayNetIncome() {
+      let netIncome = this.displayIncome() - this.displayExpense();
+      return netIncome;
     }
   }
 }).mount('#app');
