@@ -53,7 +53,7 @@
 
             <div id="net-container">
                 <div class="text-container">
-                    <p>Income: <span v-if="">{{income}}</span></p>
+                    <p>Income: <span>{{displayIncome()}}</span></p>
                     <p>Expenses: <span>{{amount}}</span></p>
                     <p>Net: <span>1000000000</span></p>
                 </div>
@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <div id="filter-container" style="display: none;">
+            <div id="filter-container">
                 <label for="start-date">start: </label>
                 <input id="start-date" type="date">
 

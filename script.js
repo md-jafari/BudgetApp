@@ -21,8 +21,8 @@ const app = Vue.createApp({
         income: this.income,
         incomeDate: this.incomeDate
       }
-
       this.incomes.push(incomeObject);
+      this.income = 0; //resets the income for a new submit
     },
     addExpense() {
       if (this.expenses.titel.trim() === '') {
@@ -36,7 +36,14 @@ const app = Vue.createApp({
       }
       this.expenses.push(expenseObject);
     },
-    
+    displayIncome() {
+      let totalIncome = 0;
+      for (let income of this.incomes) {
+        totalIncome += parseInt(income.income); //parse to stop adding 0 to income
+      }
+      return totalIncome;
+    }
+
 
   }
 }).mount('#app');
