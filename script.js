@@ -1,17 +1,16 @@
 const app = Vue.createApp({
   data() {
     return {
-      expenses: [],
       incomes: [],
-
-      titel: '',
-      amount: 0,
-      expenseDate: null,
-      expenseCategory: '',
+      expenses: [],
 
       income: 0,
-      incomeDate: null
+      incomeDate: null,
 
+      title: '',
+      expense: 0,
+      expenseDate: null,
+      expenseCategory: ''
     }
   },
   methods: {
@@ -25,16 +24,17 @@ const app = Vue.createApp({
       this.income = 0; //resets the income for a new submit
     },
     addExpense() {
-      if (this.expenses.titel.trim() === '') {
-        return;
-      }
       let expenseObject = {
-        titel: this.titel,
-        amount: this.amount,
+        title: this.title,
+        expense: this.expense,
         expenseDate: this.expenseDate,
         expenseCategory: this.expenseCategory
       }
       this.expenses.push(expenseObject);
+      this.title = ''; //reset
+      this.expense = 0;
+      this.expenseDate = null;
+      this.expenseCategory = '';
     },
     displayIncome() {
       let totalIncome = 0;
@@ -42,8 +42,13 @@ const app = Vue.createApp({
         totalIncome += parseInt(income.income); //parse to stop adding 0 to income
       }
       return totalIncome;
+    },
+    displayExpense() {
+      let totalExpense = 0;
+      for (let expense of this.expenses) {
+        totalExpense += parseInt(expense.expense);
+      }
+      return totalExpense;
     }
-
-
   }
 }).mount('#app');

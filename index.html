@@ -32,11 +32,11 @@
                     <button type="submit">save income</button>
                 </form>
 
-                <form class="expense-form">
+                <form @submit.prevent="addExpense" class="expense-form">
                     <h2>Expense</h2>
 
                     <input type="text" v-model="title" placeholder="Enter title">
-                    <input type="text" v-model="amount" placeholder="Enter Amount">
+                    <input type="text" v-model="expense" placeholder="Enter Amount">
                     <input type="date" v-model="expenseDate">
 
                     <select name="category" id="gategory" v-model="expenseCategory">
@@ -46,7 +46,7 @@
                         <option value="Transport">Transport</option>
                     </select>
 
-                    <button>save expense</button>
+                    <button type="submit">save expense</button>
 
                 </form>
             </div>
@@ -54,7 +54,7 @@
             <div id="net-container">
                 <div class="text-container">
                     <p>Income: <span>{{displayIncome()}}</span></p>
-                    <p>Expenses: <span>{{amount}}</span></p>
+                    <p>Expenses: <span>{{displayExpense()}}</span></p>
                     <p>Net: <span>1000000000</span></p>
                 </div>
                 <div class="button-container">
