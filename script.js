@@ -21,7 +21,7 @@ const app = Vue.createApp({
         incomeDate: this.incomeDate
       }
       this.incomes.push(incomeObject);
-      this.income = 0; //resets the income for a new submit
+      this.resetIncome(); //resets the income for a new submit
     },
     addExpense() {
       let expenseObject = {
@@ -31,10 +31,7 @@ const app = Vue.createApp({
         expenseCategory: this.expenseCategory
       }
       this.expenses.push(expenseObject);
-      this.title = ''; //reset
-      this.expense = 0;
-      this.expenseDate = null;
-      this.expenseCategory = '';
+      this.resetExpense();
     },
     displayIncome() {
       let totalIncome = 0;
@@ -53,6 +50,16 @@ const app = Vue.createApp({
     displayNetIncome() {
       let netIncome = this.displayIncome() - this.displayExpense();
       return netIncome;
+    },
+    resetIncome () {
+      this.income = 0;
+      this.incomeDate = null;
+    },
+    resetExpense() {
+      this.title = ''; 
+      this.expense = 0;
+      this.expenseDate = null;
+      this.expenseCategory = '';
     }
   }
 }).mount('#app');
