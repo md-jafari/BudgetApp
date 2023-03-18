@@ -10,7 +10,9 @@ const app = Vue.createApp({
       title: '',
       expense: 0,
       expenseDate: null,
-      expenseCategory: ''
+      expenseCategory: '',
+
+      unsavedChanges: false
     }
   },
   methods: {
@@ -22,6 +24,8 @@ const app = Vue.createApp({
       }
       this.incomes.push(incomeObject);
       this.resetIncome(); //resets the income for a new submit
+
+      this.unsavedChanges = true;
     },
     addExpense() {
       let expenseObject = {
@@ -32,6 +36,8 @@ const app = Vue.createApp({
       }
       this.expenses.push(expenseObject);
       this.resetExpense();
+
+      this.unsavedChanges = true;
     },
     displayIncome() {
       let totalIncome = 0;
@@ -51,15 +57,28 @@ const app = Vue.createApp({
       let netIncome = this.displayIncome() - this.displayExpense();
       return netIncome;
     },
-    resetIncome () {
+    resetIncome() {
       this.income = 0;
       this.incomeDate = null;
     },
     resetExpense() {
-      this.title = ''; 
+      this.title = '';
       this.expense = 0;
       this.expenseDate = null;
       this.expenseCategory = '';
-    }
+    },
+    saveChanges() {
+      this.unsavedChanges = false;
+    },
+  },
+  //show alert on exit
+  mounted() {
+    window.addEventListener('beforeunload', (event) => {
+      if (this.unsavedChanges) {
+        event.preventDefault();
+        event.returnValue = '';
+      }
+    });
   }
+  
 }).mount('#app');
