@@ -64,7 +64,9 @@
                 </div>
             </section>
             <div class="all" v-if="showAll">
-                <p><span>All: {{displayAll()}}</span></p>
+                <ul>
+                    <li><span>All: {{displayAll()}}</span></li>
+                </ul>
             </div>
 
             <div class="filter" v-if="showAll">
@@ -75,7 +77,7 @@
 
             </div>
             
-            <div id="filter-container">
+            <section id="filter-container">
                 <label for="start-date">start: </label>
                 <input id="start-date" type="date">
 
@@ -89,7 +91,7 @@
                     <option value="Transport">Transport</option>
                 </select>
                 <button>search</button>
-            </div>
+            </section>
 
             <div>
                 <ul>

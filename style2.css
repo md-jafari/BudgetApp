@@ -156,6 +156,10 @@ header {
     margin-left: auto;
 }
 
+li {
+    list-style: none;
+}
+
 .text-container span {
     font-weight: bold;
 }

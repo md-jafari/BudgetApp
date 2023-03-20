@@ -84,7 +84,6 @@ const app = Vue.createApp({
 
 
 
-
     // saveChanges() {
     //   this.unsavedChanges = false;
     // },
@@ -102,5 +101,8 @@ const app = Vue.createApp({
   //     }
   //   });
   // }
+
+
+  // https://codepen.io/havardob/pen/PoWbeoZ vg-del
 
 }).mount('#app');
