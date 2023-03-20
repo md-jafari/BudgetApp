@@ -22,7 +22,7 @@
     <main>
         <div id="app">
 
-            <div id="input-container">
+            <section id="input-container">
 
                 <form @submit.prevent="addIncome" class="budget-form">
                     <h2>Income</h2>
@@ -49,21 +49,32 @@
                     <button type="submit">save expense</button>
 
                 </form>
-            </div>
+            </section>
 
-            <div id="net-container">
+            <section id="net-container">
                 <div class="text-container">
                     <p>Income: <span>{{displayIncome()}}</span></p>
                     <p>Expenses: <span>{{displayExpense()}}</span></p>
                     <p>Net: <span>{{displayNetIncome()}}</span></p>
                 </div>
                 <div class="button-container">
-                    <button>all</button>
-                    <button>filter</button>
-                    <button>diagram</button>
+                    <button type="button" @click="toggleAll">all</button>
+                    <button type="button" @click="toggleAll">filter</button>
+                    <button type="button" @click="toggleAll">diagram</button>
                 </div>
+            </section>
+            <div class="all" v-if="showAll">
+                <p><span>All: {{displayAll()}}</span></p>
             </div>
 
+            <div class="filter" v-if="showAll">
+
+            </div>
+            
+            <div class="diagram" v-if="showAll">
+
+            </div>
+            
             <div id="filter-container">
                 <label for="start-date">start: </label>
                 <input id="start-date" type="date">

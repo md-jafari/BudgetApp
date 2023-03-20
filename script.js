@@ -12,6 +12,8 @@ const app = Vue.createApp({
       expenseDate: null,
       expenseCategory: '',
 
+      showAll: false,
+
       unsavedChanges: false
     }
   },
@@ -25,7 +27,7 @@ const app = Vue.createApp({
       this.incomes.push(incomeObject);
       this.resetIncome(); //resets the income for a new submit
 
-      this.unsavedChanges = true;
+      // this.unsavedChanges = true;
     },
     addExpense() {
       let expenseObject = {
@@ -37,7 +39,7 @@ const app = Vue.createApp({
       this.expenses.push(expenseObject);
       this.resetExpense();
 
-      this.unsavedChanges = true;
+      // this.unsavedChanges = true;
     },
     displayIncome() {
       let totalIncome = 0;
@@ -67,22 +69,38 @@ const app = Vue.createApp({
       this.expenseDate = null;
       this.expenseCategory = '';
     },
-    saveChanges() {
-      this.unsavedChanges = false;
+    displayAll() {
+
+      return ['Income: ' + this.displayIncome(),
+      'Expense: ' + this.displayExpense()];
+
     },
+
+    toggleAll() {
+      this.showAll = !this.showAll;
+      //https://stackoverflow.com/questions/59363412/how-can-i-toggle-display-with-vuejs
+    }
+
+
+
+
+
+    // saveChanges() {
+    //   this.unsavedChanges = false;
+    // },
 
 
 
 
   },
   //show alert on exit
-  mounted() {
-    window.addEventListener('beforeunload', (event) => {
-      if (this.unsavedChanges) {
-        event.preventDefault();
-        event.returnValue = '';
-      }
-    });
-  }
+  // mounted() {
+  //   window.addEventListener('beforeunload', (event) => {
+  //     if (this.unsavedChanges) {
+  //       event.preventDefault();
+  //       event.returnValue = '';
+  //     }
+  //   });
+  // }
 
 }).mount('#app');
