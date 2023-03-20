@@ -67,8 +67,11 @@ header {
     width: 40%;
     margin-top: 10%;
     margin-bottom: 2%;
-    background-color: rgb(66, 141, 253);
+    /* background-color: rgb(66, 141, 253); */
+    background-color: rgb(253 162 66);
     border-radius: 7px;
+    font-family: math;
+    font-size: 20px;
 }
 
 .budget-form h2 {

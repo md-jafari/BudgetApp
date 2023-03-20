@@ -70,6 +70,10 @@ const app = Vue.createApp({
     saveChanges() {
       this.unsavedChanges = false;
     },
+
+
+
+
   },
   //show alert on exit
   mounted() {
@@ -80,5 +84,5 @@ const app = Vue.createApp({
       }
     });
   }
-  
+
 }).mount('#app');
