@@ -91,6 +91,12 @@ const app = Vue.createApp({
 
 
   },
+  // computed: {
+  //   removeBracket(){
+  //     return this.obj.data.incomes.replace(/[{}]/g,'');
+  //   }
+  // },
+
   //show alert on exit
   // mounted() {
   //   window.addEventListener('beforeunload', (event) => {

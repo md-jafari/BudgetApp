@@ -66,12 +66,20 @@
             <div class="all" v-if="showAll">
                 <ul>
                     <li><span v-for="income in incomes">
-                            {{income}}
+                            <p>
+                                Income: {{income.income}}
+                                Date: {{income.date}}
+                            </p>
                         </span>
                     </li>
                     <li>
                         <span v-for="expense in expenses">
-                            {{expense}}
+                            <p>
+                                Title: {{expense.title}}
+                                Expense: {{expense.expense}}
+                                Date: {{expense.date}}
+                                Category: {{expense.category}}
+                            </p>
                         </span>
                     </li>
                 </ul>
