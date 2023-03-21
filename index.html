@@ -86,7 +86,7 @@
 
                 <section id="filter-container">
                     <label for="start-date">start: </label>
-                    <input type="date" v-model="startDate">
+                    <input type="date" v-model="date">
 
                     <label for="end-date">end: </label>
                     <input type="date" v-model="endDate" >
@@ -97,8 +97,19 @@
                         <option>Rent</option>
                         <option>Transport</option>
                     </select>
-                    <button>Search</button>
+                    <button type="button" @click="toggleFilterList">Search</button>
                 </section>
+
+                <div class="filter-list" v-if="showFilterList">
+                    <ul>
+                        <li>
+                            <p>a</p>
+                            <p>a</p>
+                            <p>a</p>
+                            <p>a</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class="diagram" v-if="showAll">
@@ -106,12 +117,7 @@
             </div>
 
 
-            <div>
-                <ul>
-
-                </ul>
-
-            </div>
+            
 
             <footer>
                 <p>

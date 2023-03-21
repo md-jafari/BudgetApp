@@ -17,6 +17,7 @@ const app = Vue.createApp({
       showAll: false,
       showFilter: false,
       showDiagram: false,
+      showFilterList: false,
 
       unsavedChanges: false
     }
@@ -91,6 +92,9 @@ const app = Vue.createApp({
     
     toggleDiagram() {
       this.showDiagram = !this.showDiagram;
+    },
+    toggleFilterList() {
+      this.showFilterList = !this.showFilterList;
     },
 
     // filteredExpenses() {

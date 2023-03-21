@@ -113,8 +113,18 @@ header {
 
 #filter-container button {
     margin-left: 1%;
-    background-color: rgb(66, 141, 253);
+    background-color: rgb(253 162 66);
     border-radius: 7px;
+}
+
+.filter-list {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin-top: 5%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 #net-container{
