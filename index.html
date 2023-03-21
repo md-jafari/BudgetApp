@@ -41,9 +41,9 @@
 
                     <select name="category" id="gategory" v-model="category">
                         <option value="" disabled selected hidden>choose a category</option>
-                        <option value="Groceries">Food</option>
-                        <option value="Rent">Rent</option>
-                        <option value="Transport">Transport</option>
+                        <option>Food</option>
+                        <option>Rent</option>
+                        <option>Transport</option>
                     </select>
 
                     <button type="submit">save expense</button>
@@ -65,20 +65,26 @@
             </section>
             <div class="all" v-if="showAll">
                 <ul>
-                    <li v-for="expense in expenses"><span v-for="income in incomes">
-                        Income: {{income}} 
-                        Expense: {{expense}}</span></li>
+                    <li><span v-for="income in incomes">
+                            {{income}}
+                        </span>
+                    </li>
+                    <li>
+                        <span v-for="expense in expenses">
+                            {{expense}}
+                        </span>
+                    </li>
                 </ul>
             </div>
 
             <div class="filter" v-if="showAll">
 
             </div>
-            
+
             <div class="diagram" v-if="showAll">
 
             </div>
-            
+
             <section id="filter-container">
                 <label for="start-date">start: </label>
                 <input id="start-date" type="date">
@@ -88,9 +94,9 @@
 
                 <select name="category" id="gategory">
                     <option value="" disabled selected hidden>choose a category</option>
-                    <option value="Groceries">Food</option>
-                    <option value="Rent">Rent</option>
-                    <option value="Transport">Transport</option>
+                    <option>Food</option>
+                    <option>Rent</option>
+                    <option>Transport</option>
                 </select>
                 <button>search</button>
             </section>
