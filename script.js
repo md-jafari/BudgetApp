@@ -5,12 +5,11 @@ const app = Vue.createApp({
       expenses: [],
 
       income: 0,
-      incomeDate: null,
+      date: null,
 
       title: '',
       expense: 0,
-      expenseDate: null,
-      expenseCategory: '',
+      category: '',
 
       showAll: false,
 
@@ -22,7 +21,7 @@ const app = Vue.createApp({
     addIncome() {
       let incomeObject = {
         income: this.income,
-        incomeDate: this.incomeDate
+        date: this.date
       }
       this.incomes.push(incomeObject);
       this.resetIncome(); //resets the income for a new submit
@@ -33,22 +32,22 @@ const app = Vue.createApp({
       let expenseObject = {
         title: this.title,
         expense: this.expense,
-        expenseDate: this.expenseDate,
-        expenseCategory: this.expenseCategory
+        date: this.date,
+        category: this.category
       }
       this.expenses.push(expenseObject);
       this.resetExpense();
 
       // this.unsavedChanges = true;
     },
-    displayIncome() {
+    displayAllIncome() {
       let totalIncome = 0;
       for (let income of this.incomes) {
         totalIncome += parseInt(income.income); //parse to stop adding 0 to income
       }
       return totalIncome;
     },
-    displayExpense() {
+    displayAllExpense() {
       let totalExpense = 0;
       for (let expense of this.expenses) {
         totalExpense += parseInt(expense.expense);
@@ -56,25 +55,25 @@ const app = Vue.createApp({
       return totalExpense;
     },
     displayNetIncome() {
-      let netIncome = this.displayIncome() - this.displayExpense();
+      let netIncome = this.displayAllIncome() - this.displayAllExpense();
       return netIncome;
     },
     resetIncome() {
       this.income = 0;
-      this.incomeDate = null;
+      this.date = null;
     },
     resetExpense() {
       this.title = '';
       this.expense = 0;
-      this.expenseDate = null;
-      this.expenseCategory = '';
+      this.date = null;
+      this.category = '';
     },
-    displayAll() {
+    // displayAll() {
 
-      return ['Income: ' + this.displayIncome(),
-      'Expense: ' + this.displayExpense()];
+    //   return ['Income: ' + this.displayAllIncome(),
+    //   'Expense: ' + this.displayAllExpense()];
 
-    },
+    // },
 
     toggleAll() {
       this.showAll = !this.showAll;
@@ -104,5 +103,6 @@ const app = Vue.createApp({
 
 
   // https://codepen.io/havardob/pen/PoWbeoZ vg-del
+  //https://css-tricks.com/how-to-make-charts-with-svg/ diagram
 
 }).mount('#app');

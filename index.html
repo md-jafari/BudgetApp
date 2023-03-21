@@ -28,7 +28,7 @@
                     <h2>Income</h2>
 
                     <input type="text" id="budget-input" v-model="income" placeholder="Enter Your Income">
-                    <input type="month" v-model="incomeDate">
+                    <input type="month" v-model="date">
                     <button type="submit">save income</button>
                 </form>
 
@@ -37,9 +37,9 @@
 
                     <input type="text" v-model="title" placeholder="Enter title">
                     <input type="text" v-model="expense" placeholder="Enter Amount">
-                    <input type="date" v-model="expenseDate">
+                    <input type="date" v-model="date">
 
-                    <select name="category" id="gategory" v-model="expenseCategory">
+                    <select name="category" id="gategory" v-model="category">
                         <option value="" disabled selected hidden>choose a category</option>
                         <option value="Groceries">Food</option>
                         <option value="Rent">Rent</option>
@@ -53,8 +53,8 @@
 
             <section id="net-container">
                 <div class="text-container">
-                    <p>Income: <span>{{displayIncome()}}</span></p>
-                    <p>Expenses: <span>{{displayExpense()}}</span></p>
+                    <p>Income: <span>{{displayAllIncome()}}</span></p>
+                    <p>Expenses: <span>{{displayAllExpense()}}</span></p>
                     <p>Net: <span>{{displayNetIncome()}}</span></p>
                 </div>
                 <div class="button-container">
@@ -65,7 +65,9 @@
             </section>
             <div class="all" v-if="showAll">
                 <ul>
-                    <li><span>All: {{displayAll()}}</span></li>
+                    <li v-for="expense in expenses"><span v-for="income in incomes">
+                        Income: {{income}} 
+                        Expense: {{expense}}</span></li>
                 </ul>
             </div>
 
