@@ -11,7 +11,12 @@ const app = Vue.createApp({
       expense: 0,
       category: '',
 
+      startDate: null,
+      endDate: null,
+
       showAll: false,
+      showFilter: false,
+      showDiagram: false,
 
       unsavedChanges: false
     }
@@ -78,8 +83,28 @@ const app = Vue.createApp({
     toggleAll() {
       this.showAll = !this.showAll;
       //https://stackoverflow.com/questions/59363412/how-can-i-toggle-display-with-vuejs
-    }
+    },
 
+    toggleFilter() {
+      this.showFilter = !this.showFilter;
+    },
+    
+    toggleDiagram() {
+      this.showDiagram = !this.showDiagram;
+    },
+
+    // filteredExpenses() {
+    //   const startDate = new Date(this.startDate);
+    //   const endDate = new Date(this.endDate);
+    //   return this.expenses.filter((expense) => {
+    //     const expenseDate = new Date(expense.date);
+    //     return (
+    //       expenseDate >= startDate &&
+    //       expenseDate <= endDate &&
+    //       (!this.category || expense.category === this.category)
+    //     );
+    //   });
+    // },
 
 
 
