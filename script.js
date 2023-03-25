@@ -29,7 +29,12 @@ const app = Vue.createApp({
         income: this.income,
         date: this.date
       }
+
       this.incomes.push(incomeObject);
+
+      //store data 
+      window.localStorage.setItem('incomes', JSON.stringify(this.incomes));
+
       this.resetIncome(); //resets the income for a new submit
 
       // this.unsavedChanges = true;
@@ -42,13 +47,17 @@ const app = Vue.createApp({
         category: this.category
       }
       this.expenses.push(expenseObject);
+
+      //store data 
+      window.localStorage.setItem('expenses', JSON.stringify(this.expenses));
+
       this.resetExpense();
 
       // this.unsavedChanges = true;
     },
     displayAllIncome() {
       let totalIncome = 0;
-      for (let income of this.incomes) {
+      for (let income of this.incomes) {  
         totalIncome += parseInt(income.income); //parse to stop adding 0 to income
       }
       return totalIncome;
@@ -74,6 +83,18 @@ const app = Vue.createApp({
       this.date = null;
       this.category = '';
     },
+    resetAll() {
+      this.income = 0;
+      this.date = null;
+      this.title = '';
+      this.expense = 0;
+      this.date = null;
+      this.category = '';
+
+      window.localStorage.removeItem('incomes')
+      window.localStorage.removeItem('expenses')
+
+    },
     // displayAll() {
 
     //   return ['Income: ' + this.displayAllIncome(),
@@ -89,7 +110,7 @@ const app = Vue.createApp({
     toggleFilter() {
       this.showFilter = !this.showFilter;
     },
-    
+
     toggleDiagram() {
       this.showDiagram = !this.showDiagram;
     },
@@ -112,19 +133,39 @@ const app = Vue.createApp({
 
 
 
-    // saveChanges() {
-    //   this.unsavedChanges = false;
-    // },
+    saveChanges() {
+      this.unsavedChanges = false;
+    },
 
 
 
 
   },
-  // computed: {
-  //   removeBracket(){
-  //     return this.obj.data.incomes.replace(/[{}]/g,'');
-  //   }
-  // },
+  computed: {
+    filteredExpenses() {
+      return this.expenses.filter(expense => {
+        return (!this.category || expense.category === this.category) &&
+          (!this.startDate || expense.date >= this.startDate) &&
+          (!this.endDate || expense.date <= this.endDate);
+      });
+    },
+     filteredIncomes() {
+      return this.incomes.filter(income => {
+        return (!this.startDate.month || expense.date.month >= this.startDate.month) &&
+        (!this.endDate.month || expense.date.month <= this.endDate.month);
+      });
+    }
+  },
+  mounted() {
+    if (window.localStorage.getItem('incomes')) {
+      this.incomes = JSON.parse(window.localStorage.getItem('incomes'))
+    }
+    if (window.localStorage.getItem('expenses')) {
+      this.expenses = JSON.parse(window.localStorage.getItem('expenses'))
+    }
+  },
+  
+  
 
   //show alert on exit
   // mounted() {

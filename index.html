@@ -61,6 +61,8 @@
                     <button type="button" @click="toggleAll">All</button>
                     <button type="button" @click="toggleFilter">Filter</button>
                     <button type="button" @click="toggleDiagram">Diagram</button>
+                    <button type="button" @click="resetAll">Reset</button>
+
                 </div>
             </section>
             <div class="all" v-if="showAll">
@@ -86,10 +88,10 @@
 
                 <section id="filter-container">
                     <label for="start-date">start: </label>
-                    <input type="date" v-model="date">
+                    <input type="date" v-model="startDate">
 
                     <label for="end-date">end: </label>
-                    <input type="date" v-model="endDate" >
+                    <input type="date" v-model="endDate">
 
                     <select name="category" id="gategory" v-model="category">
                         <option value="" disabled selected hidden>Choose a category</option>
@@ -100,13 +102,25 @@
                     <button type="button" @click="toggleFilterList">Search</button>
                 </section>
 
+                
+                
                 <div class="filter-list" v-if="showFilterList">
                     <ul>
-                        <li>
-                            <p>a</p>
-                            <p>a</p>
-                            <p>a</p>
-                            <p>a</p>
+                        <li v-for="income in filteredIncomes">
+                            <p>
+                                Income: {{income.income}}
+                                Date: {{income.date}}
+                            </p>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li v-for="expense in filteredExpenses">
+                            <p>
+                                Title: {{expense.title}}
+                                Expense: {{expense.expense}}
+                                Date: {{expense.date}}
+                                Category: {{expense.category}}
+                            </p>
                         </li>
                     </ul>
                 </div>
@@ -117,7 +131,7 @@
             </div>
 
 
-            
+
 
             <footer>
                 <p>
