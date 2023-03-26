@@ -27,26 +27,26 @@
                 <form @submit.prevent="addIncome" class="budget-form">
                     <h2>Income</h2>
 
-                    <input type="text" id="budget-input" v-model="income" placeholder="Enter Your Income">
-                    <input type="month" v-model="date">
+                    <input type="text" id="income-input" v-model="income" placeholder="Enter Your Income">
+                    <input type="month" id="income-date" v-model="date">
                     <button type="submit">Save Income</button>
                 </form>
 
                 <form @submit.prevent="addExpense" class="expense-form">
                     <h2>Expense</h2>
 
-                    <input type="text" v-model="title" placeholder="Enter title">
-                    <input type="text" v-model="expense" placeholder="Enter Amount">
-                    <input type="date" v-model="date">
+                    <input type="text" id="title-input" v-model="title" placeholder="Enter title">
+                    <input type="text" id="expense-input" v-model="expense" placeholder="Enter Amount">
+                    <input type="date" id="expense-date" v-model="date">
 
-                    <select name="category" id="gategory" v-model="category">
+                    <select name="category" id="category-input" v-model="category">
                         <option value="" disabled selected hidden>choose a category</option>
                         <option>Food</option>
                         <option>Rent</option>
                         <option>Transport</option>
                     </select>
 
-                    <button type="submit">Save Expense</button>
+                    <button type="submit" id="submitExpense">Save Expense</button>
 
                 </form>
             </section>
@@ -58,7 +58,7 @@
                     <p>Net: <span>{{displayNetIncome()}}</span></p>
                 </div>
                 <div class="button-container">
-                    <button type="button" @click="toggleAll">All</button>
+                    <button type="button" id="allButton" @click="toggleAll">All</button>
                     <button type="button" @click="toggleFilter">Filter</button>
                     <button type="button" @click="toggleDiagram">Diagram</button>
                     <button type="button" @click="resetAll">Reset</button>
@@ -68,13 +68,13 @@
             <div class="all" v-if="showAll">
                 <ul>
                     <li v-for="income in incomes">
-                        <p>
+                        <p id="income-result">
                             Income: {{income.income}}
                             Date: {{income.date}}
                         </p>
                     </li>
                     <li v-for="expense in expenses">
-                        <p>
+                        <p id="expense-result">
                             Title: {{expense.title}}
                             Expense: {{expense.expense}}
                             Date: {{expense.date}}
