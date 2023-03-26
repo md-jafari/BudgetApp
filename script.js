@@ -57,7 +57,7 @@ const app = Vue.createApp({
     },
     displayAllIncome() {
       let totalIncome = 0;
-      for (let income of this.incomes) {  
+      for (let income of this.incomes) {
         totalIncome += parseInt(income.income); //parse to stop adding 0 to income
       }
       return totalIncome;
@@ -149,10 +149,9 @@ const app = Vue.createApp({
           (!this.endDate || expense.date <= this.endDate);
       });
     },
-     filteredIncomes() {
+    filteredIncomes() {
       return this.incomes.filter(income => {
-        return (!this.startDate.month || expense.date.month >= this.startDate.month) &&
-        (!this.endDate.month || expense.date.month <= this.endDate.month);
+        return (!this.startDate || income.date >= this.startDate)
       });
     }
   },
@@ -164,8 +163,8 @@ const app = Vue.createApp({
       this.expenses = JSON.parse(window.localStorage.getItem('expenses'))
     }
   },
-  
-  
+
+
 
   //show alert on exit
   // mounted() {
