@@ -53,7 +53,7 @@
 
             <form class="net-container">
                 <div class="net-text-container">
-                    <p>Income: <span>{{displayAllIncome()}}</span></p>
+                    <p id="income-result">Income: <span>{{displayAllIncome()}}</span></p>
                     <p>Expenses: <span>{{displayAllExpense()}}</span></p>
                     <p>Net: <span>{{displayNetIncome()}}</span></p>
                 </div>
@@ -75,7 +75,7 @@
                                 Income: <span>{{income.income}}</span>
                             </p>
                             <p>
-                                <span>{{income.date}}</span>
+                                <span id="income-month">{{income.date}}</span>
                             </p>
                         </section>
 
@@ -88,20 +88,20 @@
                         <section class="all-expense-result">
 
                             <p>
-                                Expense: <span>{{expense.expense}}</span>
+                                Expense: <span id="expense-result">{{expense.expense}}</span>
                                 
                             </p>
                                 
                             <p>
-                                <span>{{expense.title}}</span>
+                                <span id="title-result">{{expense.title}}</span>
                             </p>
 
                             <p>
-                                <span>{{expense.date}}</span>
+                                <span id="date-result">{{expense.date}}</span>
                             </p>
 
                             <p>
-                                <span>{{expense.category}}</span>
+                                <span id="category-result">{{expense.category}}</span>
                             </p>
 
                         </section>
