@@ -117,13 +117,13 @@ const app = Vue.createApp({
     toggleFilterList() {
       this.showFilterList = !this.showFilterList;
     },
-    
-    deleteExpense(index){
+
+    deleteExpense(index) {
       this.expenses.splice(index, 1);
       localStorage.setItem('expenses', JSON.stringify(this.expenses));
     },
 
-    deleteIncome(index){
+    deleteIncome(index) {
       this.incomes.splice(index, 1);
       window.localStorage.setItem('incomes', JSON.stringify(this.incomes));
     },
@@ -145,6 +145,15 @@ const app = Vue.createApp({
 
     saveChanges() {
       this.unsavedChanges = false;
+    },
+    drawDiagram() {
+      const canvas = this.$refs.canvas;
+      const ctx = canvas.getContext('2d');
+      // const w = canvas.width = 500;
+      // const h = canvas.height = 300;
+      // ctx.beginPath();
+      // ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+      // ctx.stroke();
     },
 
 
@@ -172,6 +181,7 @@ const app = Vue.createApp({
     if (window.localStorage.getItem('expenses')) {
       this.expenses = JSON.parse(window.localStorage.getItem('expenses'))
     }
+    this.drawDiagram();
   },
 
 
