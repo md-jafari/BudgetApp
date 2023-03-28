@@ -174,9 +174,9 @@
                 </div>
             </div>
 
-            <div class="diagram" v-if="showDiagram">
+            <div class="diagram" v-if="showDiagram"> <!-- Cannot read properties of undefined -->
             </div>
-            <canvas id="canvasStyle" ref="canvas"></canvas>
+            <canvas id="canvasStyle" ref="canvas"></canvas><!--v-if doenst work with canvas -->
 
 
 
