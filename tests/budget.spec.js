@@ -61,7 +61,7 @@ test('Add expense, title, month and category', async ({ page }) => {
   await allButton.click();
 
   //Get income data
-  let newExpense = await page.locator('#expense-result').textContent();//convert as text
+  let newExpense = await page.locator('.all-expense-result').textContent();//convert as text
   
   //check if data is equivalent
   await expect(newExpense).toEqual(' Title: mat Expense: 5000 Date: 2023-01-25 Category: Food');

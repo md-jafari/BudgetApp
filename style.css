@@ -95,7 +95,7 @@ span {
     grid-template:
         'a b c d';
     padding-top: 5%;
-    width: 40%;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -208,4 +208,28 @@ footer{
     font-size: 12px;
     text-align: center;
     padding: 20px;
+}
+
+@media (max-width: 600px){
+
+    h1 {
+        font-size: 35px;
+    }
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    .budget-form, .expense-form{
+        width: 80%;
+        padding: 3%;
+    }
+    .expense-form{  
+        margin-top: 5%;
+        margin-left: 0;
+    }
+    .net-container {
+        font-size: 15px;
+    }
 }
