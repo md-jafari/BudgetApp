@@ -20,12 +20,14 @@ header {
     margin: 1em auto;
 
 }
+
 .input-container {
     display: flex;
     flex-direction: row;
-    
+
 }
-.input-container input{
+
+.input-container input {
     padding: 5%;
     margin-top: 1%;
     border-radius: 7px;
@@ -48,7 +50,8 @@ header {
     font-size: 15px;
 }
 
-.budget-form, .expense-form{
+.budget-form,
+.expense-form {
     display: flex;
     flex-direction: column;
     width: 45%;
@@ -57,13 +60,15 @@ header {
     background-color: rgb(244, 239, 239);
 
 }
-.expense-form{  
+
+.expense-form {
     margin-left: 10%;
 }
 
 .budget-form h2 {
     margin-bottom: 5%;
 }
+
 .expense-form h2 {
     margin-bottom: 5%;
 }
@@ -80,6 +85,7 @@ li {
     background-color: rgb(244, 239, 239);
 
 }
+
 .net-text-container {
     display: grid;
     grid-template:
@@ -102,36 +108,40 @@ span {
 
 .net-button-container button {
     font-family: math;
-    background-color:rgb(15, 141, 245);
+    background-color: rgb(15, 141, 245);
     font-size: 15px;
     border-radius: 7px;
     padding: 1%;
     margin: 5%;
 }
 
-.all{
-    background-color:  rgb(244, 239, 239);
+.all {
+    background-color: rgb(244, 239, 239);
     margin-top: 5%;
     font-size: 70%;
 }
+
 li {
     display: grid;
-    grid-template: 
-        'a b' / 90% 5% ;
-        padding: 2%;
-        border-bottom: solid white ;
+    grid-template:
+        'a b' / 90% 5%;
+    padding: 2%;
+    border-bottom: solid white;
 }
 
 .all-income-result {
     display: flex;
     flex-direction: row;
 }
+
 .all-income-result p {
     margin-right: 5%;
 }
+
 p {
     word-break: break-all;
 }
+
 #delete-button {
     border: none;
 }
@@ -139,9 +149,10 @@ p {
 .all-expense-result {
     display: flex;
     flex-direction: row;
-    
+
 }
-.all-expense-result p{
+
+.all-expense-result p {
     margin-right: 3%;
 }
 
@@ -151,10 +162,12 @@ p {
     padding: 3%;
     font-size: 18px;
 }
+
 .filter-income-result {
     display: flex;
     flex-direction: row;
 }
+
 .filter-expense-result {
     display: flex;
     flex-direction: row;
@@ -163,6 +176,7 @@ p {
 .filter-income-result p {
     margin-right: 5%;
 }
+
 .filter-expense-result p {
     margin-right: 5%;
 }
@@ -185,7 +199,7 @@ p {
     margin-left: 1%;
 }
 
-.filter-container select{
+.filter-container select {
     margin-left: 1%;
     border-radius: 7px;
 }
@@ -204,32 +218,16 @@ li {
     font-weight: bold;
 }
 
-footer{
+footer {
     font-size: 12px;
     text-align: center;
     padding: 20px;
 }
 
-@media (max-width: 600px){
+.diagram {
+    text-align: center;
+}
 
-    h1 {
-        font-size: 35px;
-    }
-    .input-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-    }
-    .budget-form, .expense-form{
-        width: 80%;
-        padding: 3%;
-    }
-    .expense-form{  
-        margin-top: 5%;
-        margin-left: 0;
-    }
-    .net-container {
-        font-size: 15px;
-    }
+#canvasStyle {
+    width: 80%;
 }

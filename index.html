@@ -53,7 +53,7 @@
 
             <form class="net-container">
                 <div class="net-text-container">
-                    <p>Income: <span>{{displayAllIncome()}}</span></p>
+                    <p id="income-result">Income: <span>{{displayAllIncome()}}</span></p>
                     <p>Expenses: <span>{{displayAllExpense()}}</span></p>
                     <p>Net: <span>{{displayNetIncome()}}</span></p>
                 </div>
@@ -66,7 +66,6 @@
                 </div>
             </form>
 
-
             <div class="all" v-if="showAll">
                 <ul>
                     <li v-for="income in incomes">
@@ -75,7 +74,7 @@
                                 Income: <span>{{income.income}}</span>
                             </p>
                             <p>
-                                <span>{{income.date}}</span>
+                                <span id="income-month">{{income.date}}</span>
                             </p>
                         </section>
 
@@ -83,25 +82,24 @@
 
                     </li>
 
-
                     <li v-for="expense in expenses">
                         <section class="all-expense-result">
 
                             <p>
-                                Expense: <span>{{expense.expense}}</span>
+                                Expense: <span id="expense-result">{{expense.expense}}</span>
                                 
                             </p>
                                 
                             <p>
-                                <span>{{expense.title}}</span>
+                                <span id="title-result">{{expense.title}}</span>
                             </p>
 
                             <p>
-                                <span>{{expense.date}}</span>
+                                <span id="date-result">{{expense.date}}</span>
                             </p>
 
                             <p>
-                                <span>{{expense.category}}</span>
+                                <span id="category-result">{{expense.category}}</span>
                             </p>
 
                         </section>
@@ -112,7 +110,6 @@
                 </ul>
             </div>
             
-
             <div class="filter" v-if="showFilter">
 
                 <form class="filter-container">
@@ -130,8 +127,6 @@
                     </select>
                     <button type="button" @click="toggleFilterList">Search</button>
                 </form>
-
-                
                 
                 <div class="filter-list" v-if="showFilterList">
                     <ul>
@@ -174,12 +169,19 @@
                 </div>
             </div>
 
-            <div class="diagram" v-if="showAll">
-
+            <div class="diagram" ><!-- Cannot read properties of undefined -->
+                <canvas id="canvasStyle" ref="canvas"></canvas><!--v-if doenst work with canvas -->
+                <p v-for="(expense, index) in expenses">{{ getPercentage(expense) }}%</p>
+              </div>
+                <svg width="80" height="100">
+                    <circle
+                        v-for="(expense, index) in expenses"
+                        :cx="index * 20 + 10"
+                        :cy="index * 20 + 10"
+                        r="10"
+                        style="fill: green"/>
+                </svg>
             </div>
-
-
-
 
             <footer>
                 <p>
