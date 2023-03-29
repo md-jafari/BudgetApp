@@ -66,7 +66,6 @@
                 </div>
             </form>
 
-
             <div class="all" v-if="showAll">
                 <ul>
                     <li v-for="income in incomes">
@@ -82,7 +81,6 @@
                         <button id="delete-button" @click="deleteIncome(index)">❌</button>
 
                     </li>
-
 
                     <li v-for="expense in expenses">
                         <section class="all-expense-result">
@@ -112,7 +110,6 @@
                 </ul>
             </div>
             
-
             <div class="filter" v-if="showFilter">
 
                 <form class="filter-container">
@@ -130,8 +127,6 @@
                     </select>
                     <button type="button" @click="toggleFilterList">Search</button>
                 </form>
-
-                
                 
                 <div class="filter-list" v-if="showFilterList">
                     <ul>
@@ -176,10 +171,17 @@
 
             <div class="diagram" ><!-- Cannot read properties of undefined -->
                 <canvas id="canvasStyle" ref="canvas"></canvas><!--v-if doenst work with canvas -->
+                <p v-for="(expense, index) in expenses">{{ getPercentage(expense) }}%</p>
+              </div>
+                <svg width="80" height="100">
+                    <circle
+                        v-for="(expense, index) in expenses"
+                        :cx="index * 20 + 10"
+                        :cy="index * 20 + 10"
+                        r="10"
+                        style="fill: green"/>
+                </svg>
             </div>
-
-
-
 
             <footer>
                 <p>
