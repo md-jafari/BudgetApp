@@ -176,7 +176,7 @@
                     <canvas id="canvasStyle" ref="canvas"></canvas><!--v-if doenst work with canvas -->
                 </div>
 
-                <div class="svg-container" v-for="(category, index) in  getCategory">
+                <div class="svg-container" v-for="category in  getCategory">
                     <svg width="50" height="50">
                         <circle
                         
@@ -186,7 +186,7 @@
                             :style="{fill: category.color}"/>
                     </svg>
 
-                    <p> {{category.name}}:  {{category.precentage}}  %</p>
+                    <p> {{category.name}}:  {{category.percentage}}  %</p>
 
                 </div>
                </div>

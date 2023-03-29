@@ -233,22 +233,21 @@ const app = Vue.createApp({
     },
 
     getCategory() {
-
       let foodObj = {
         name: 'Food',
         color: '#4CAF50',
-        precentage: 0
-      }
+        percentage: 0
+      };
       let rentObj = {
         name: 'Rent',
         color: '#00BCD4',
-        precentage: 0
-      }
+        percentage: 0
+      };
       let transportObj = {
         name: 'Transport',
         color: '#E91E63',
-        precentage: 0
-      }
+        percentage: 0
+      };
 
       let totalFood = 0;
       let totalRent = 0;
@@ -257,34 +256,30 @@ const app = Vue.createApp({
       let categories = [];
 
       this.expenses.forEach(expense => {
-          if(expense.category === 'Food'){
-            totalFood += expense.expense;
-          }
-          else if (expense.category === 'Rent'){
-              totalRent += expense.expense
-          }
-          else {
-            totalTransport += expense.expense
-          }
+        if (expense.category === 'Food') {
+          totalFood += expense.expense;
+        }
+        else if (expense.category === 'Rent') {
+          totalRent += expense.expense;
+        }
+        else {
+          totalTransport += expense.expense;
+        }
       });
 
       this.expenses.forEach(expense => {
-          totalExpense += expense.expense
+        totalExpense += expense.expense;
       });
 
-      foodObj.precentage = (totalFood / totalExpense) * 100;
-      foodObj.precentage.toFixed(0);
-
-      rentObj.precentage = (totalRent / totalExpense) * 100;
-      rentObj.precentage.toFixed(0);
-
-      transportObj.precentage = (totalTransport / totalExpense) * 100;
-      transportObj.precentage.toFixed(0);
+      foodObj.percentage = Math.round((totalFood / totalExpense) * 100);
+      rentObj.percentage = Math.round((totalRent / totalExpense) * 100);
+      transportObj.percentage = Math.round((totalTransport / totalExpense) * 100);
 
       categories.push(foodObj, rentObj, transportObj);
 
       return categories;
     },
+
   },
   mounted() {
     if (window.localStorage.getItem('incomes')) {
