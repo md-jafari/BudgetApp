@@ -213,7 +213,6 @@ const app = Vue.createApp({
 
       let colors = ['#4CAF50', '#00BCD4', '#E91E63'];
 
-
       let startAngel = 0;
 
       let endAngel = 0;
@@ -248,7 +247,6 @@ const app = Vue.createApp({
       }
     },
 
-
   },
   computed: {
     filteredExpenses() {
@@ -279,7 +277,6 @@ const app = Vue.createApp({
     }
     this.drawDiagram();
   },
-
 
 
   //show alert on exit

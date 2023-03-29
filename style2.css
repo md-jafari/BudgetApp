@@ -224,5 +224,10 @@ footer {
     padding: 20px;
 }
 
+.diagram {
+    text-align: center;
+}
+
 #canvasStyle {
+    width: 80%;
 }
