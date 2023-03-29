@@ -101,14 +101,21 @@ const app = Vue.createApp({
     toggleAll() {
       this.showAll = !this.showAll;
       //https://stackoverflow.com/questions/59363412/how-can-i-toggle-display-with-vuejs
+      this.showFilter = false;
+      this.showDiagram = false;
     },
 
     toggleFilter() {
       this.showFilter = !this.showFilter;
+      this.showAll = false;
+      this.showDiagram = false;
     },
 
     toggleDiagram() {
       this.showDiagram = !this.showDiagram;
+      this.showFilter = false;
+      this.showAll = false;
+      this.showFilter = false;
     },
     toggleFilterList() {
       this.showFilterList = !this.showFilterList;
@@ -160,6 +167,7 @@ const app = Vue.createApp({
       }
       return total;
     },
+
     drawDiagram() {
       const canvas = this.$refs.canvas;
       const ctx = canvas.getContext('2d');
@@ -204,6 +212,7 @@ const app = Vue.createApp({
     },
   },
   computed: {
+
     filteredExpenses() {
       return this.expenses.filter(expense => {
         return (!this.category || expense.category === this.category) &&
@@ -211,6 +220,7 @@ const app = Vue.createApp({
           (!this.endDate || expense.date <= this.endDate);
       });
     },
+
     filteredIncomes() {
       return this.incomes.filter(income => {
         const incomeDate = new Date(income.date);
@@ -222,30 +232,59 @@ const app = Vue.createApp({
       });
     },
 
-    // getCategoryPercentages() {
-    //   const categoryTotals = {};
-    //   this.expenses.forEach(expense => {
-    //     if (!categoryTotals[expense.category]) {
-    //       categoryTotals[expense.category] = 0;
-    //     }
-    //     categoryTotals[expense.category] += expense.expense;
-    //   });
-    
-    //   const totalAmount = Object.values(categoryTotals).reduce((total, amount) => total + amount, 0);
-    
-    //   return Object.entries(categoryTotals).map(([category, amount]) => ({
-    //     category,
-    //     percentage: ((amount / totalAmount) * 100).toFixed(2),
-    //   }));
-    // },
-    
-    totalAmount() {
-      return this.expenses.reduce((total, expense) => total + expense.expense, 0);
-    },
-    getPercentage() {
-      return (expense) => ((expense.expense / this.totalAmount) * 100).toFixed(2);
-    },
+    getCategory() {
 
+      let foodObj = {
+        name: 'Food',
+        color: '#4CAF50',
+        precentage: 0
+      }
+      let rentObj = {
+        name: 'Rent',
+        color: '#00BCD4',
+        precentage: 0
+      }
+      let transportObj = {
+        name: 'Transport',
+        color: '#E91E63',
+        precentage: 0
+      }
+
+      let totalFood = 0;
+      let totalRent = 0;
+      let totalTransport = 0;
+      let totalExpense = 0;
+      let categories = [];
+
+      this.expenses.forEach(expense => {
+          if(expense.category === 'Food'){
+            totalFood += expense.expense;
+          }
+          else if (expense.category === 'Rent'){
+              totalRent += expense.expense
+          }
+          else {
+            totalTransport += expense.expense
+          }
+      });
+
+      this.expenses.forEach(expense => {
+          totalExpense += expense.expense
+      });
+
+      foodObj.precentage = (totalFood / totalExpense) * 100;
+      foodObj.precentage.toFixed(0);
+
+      rentObj.precentage = (totalRent / totalExpense) * 100;
+      rentObj.precentage.toFixed(0);
+
+      transportObj.precentage = (totalTransport / totalExpense) * 100;
+      transportObj.precentage.toFixed(0);
+
+      categories.push(foodObj, rentObj, transportObj);
+
+      return categories;
+    },
   },
   mounted() {
     if (window.localStorage.getItem('incomes')) {

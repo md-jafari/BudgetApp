@@ -169,19 +169,28 @@
                 </div>
             </div>
 
-            <div class="diagram" ><!-- Cannot read properties of undefined -->
-                <canvas id="canvasStyle" ref="canvas"></canvas><!--v-if doenst work with canvas -->
-                <p v-for="(expense, index) in expenses">{{ getPercentage(expense) }}%</p>
-              </div>
-                <svg width="80" height="100">
-                    <circle
-                        v-for="(expense, index) in expenses"
-                        :cx="index * 20 + 10"
-                        :cy="index * 20 + 10"
-                        r="10"
-                        style="fill: green"/>
-                </svg>
-            </div>
+               <div class="diagram-container">
+
+                <div class="diagram" ><!-- Cannot read properties of undefined -->
+               
+                    <canvas id="canvasStyle" ref="canvas"></canvas><!--v-if doenst work with canvas -->
+                </div>
+
+                <div class="svg-container" v-for="(category, index) in  getCategory">
+                    <svg width="50" height="50">
+                        <circle
+                        
+                            :cx="0 * 20 + 10"
+                            :cy="0 * 20 + 10"
+                            r="10"
+                            :style="{fill: category.color}"/>
+                    </svg>
+
+                    <p> {{category.name}}:  {{category.precentage}}  %</p>
+
+                </div>
+               </div>
+            
 
             <footer>
                 <p>
