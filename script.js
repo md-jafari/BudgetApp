@@ -124,21 +124,6 @@ const app = Vue.createApp({
       window.localStorage.setItem('incomes', JSON.stringify(this.incomes));
     },
 
-    // filteredExpenses() {
-    //   const startDate = new Date(this.startDate);
-    //   const endDate = new Date(this.endDate);
-    //   return this.expenses.filter((expense) => {
-    //     const expenseDate = new Date(expense.date);
-    //     return (
-    //       expenseDate >= startDate &&
-    //       expenseDate <= endDate &&
-    //       (!this.category || expense.category === this.category)
-    //     );
-    //   });
-    // },
-
-
-
     saveChanges() {
       this.unsavedChanges = false;
     },
@@ -275,9 +260,15 @@ const app = Vue.createApp({
     },
     filteredIncomes() {
       return this.incomes.filter(income => {
-        return (!this.startDate || income.date >= this.startDate)
+        const incomeDate = new Date(income.date);
+        const startDate = new Date(this.startDate);
+        const endDate = new Date(this.endDate);
+
+        return (!this.startDate || incomeDate >= startDate) &&
+          (!this.endDate || incomeDate <= endDate);
       });
     },
+
   },
   mounted() {
     if (window.localStorage.getItem('incomes')) {
