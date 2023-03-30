@@ -13,13 +13,13 @@ test('Add income and month', async ({ page }) => {
 
   //Find input for income
   let income = await page.locator('#income-input');
-  let month = await page.locator('#income-date');
+  let date = await page.locator('#income-date');
 
-  let date = "2023-01"; //https://www.lambdatest.com/learning-hub/automate-date-pickers-with-playwright
+  let inputDate = "2023-01-02"; //https://www.lambdatest.com/learning-hub/automate-date-pickers-with-playwright
 
   //Add data for income
   await income.fill('27500');
-  await month.fill(date);
+  await date.fill(inputDate);
 
   //Save input
   await page.keyboard.press('Enter'); //Enter works here instead of submit but not on expense
@@ -33,7 +33,7 @@ test('Add income and month', async ({ page }) => {
   let newdate = await page.locator('#income-month').textContent();
   //check if data is equivalent
   await expect(newIncome).toEqual('Income: 27500');
-  await expect(newdate).toEqual('2023-01');
+  await expect(newdate).toEqual('2023-01-02');
 
 });
 
