@@ -241,6 +241,8 @@ footer {
     margin-left: 35px;
 }
 
+
+
 @media (max-width: 50rem) {
     .input-container {
         display: flex;
