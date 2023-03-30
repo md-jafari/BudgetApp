@@ -4,7 +4,7 @@ const app = Vue.createApp({
       incomes: [],
       expenses: [],
 
-      income: 0,
+      income: '',
       date: null,
 
       title: '',
@@ -13,6 +13,7 @@ const app = Vue.createApp({
 
       startDate: null,
       endDate: null,
+      filterCategory: '',
 
       showAll: false,
       showFilter: false,
@@ -39,6 +40,7 @@ const app = Vue.createApp({
 
       // this.unsavedChanges = true;
     },
+
     addExpense() {
       let expenseObject = {
         title: this.title,
@@ -57,6 +59,7 @@ const app = Vue.createApp({
 
       // this.unsavedChanges = true;
     },
+
     displayAllIncome() {
       let totalIncome = 0;
       for (let income of this.incomes) {
@@ -64,6 +67,7 @@ const app = Vue.createApp({
       }
       return totalIncome;
     },
+
     displayAllExpense() {
       let totalExpense = 0;
       for (let expense of this.expenses) {
@@ -71,20 +75,24 @@ const app = Vue.createApp({
       }
       return totalExpense;
     },
+
     displayNetIncome() {
       let netIncome = this.displayAllIncome() - this.displayAllExpense();
       return netIncome;
     },
+
     resetIncome() {
       this.income = 0;
       this.date = null;
     },
+
     resetExpense() {
       this.title = '';
       this.expense = 0;
       this.date = null;
       this.category = '';
     },
+
     resetAll() {
       this.income = 0;
       this.date = null;
@@ -117,6 +125,7 @@ const app = Vue.createApp({
       this.showAll = false;
       this.showFilter = false;
     },
+    
     toggleFilterList() {
       this.showFilterList = !this.showFilterList;
     },
@@ -124,11 +133,13 @@ const app = Vue.createApp({
     deleteExpense(index) {
       this.expenses.splice(index, 1);
       localStorage.setItem('expenses', JSON.stringify(this.expenses));
+      this.drawDiagram();
     },
 
     deleteIncome(index) {
       this.incomes.splice(index, 1);
       window.localStorage.setItem('incomes', JSON.stringify(this.incomes));
+      this.drawDiagram();
     },
 
     saveChanges() {
@@ -214,14 +225,25 @@ const app = Vue.createApp({
   computed: {
 
     filteredExpenses() {
-      return this.expenses.filter(expense => {
-        return (!this.category || expense.category === this.category) &&
-          (!this.startDate || expense.date >= this.startDate) &&
+      if (this.filterCategory === 'All'){
+        
+        return this.expenses.filter(expense => {
+          return (!this.startDate || expense.date >= this.startDate) &&
           (!this.endDate || expense.date <= this.endDate);
-      });
+        })
+      }
+      else {
+        return this.expenses.filter(expense => {
+          return (!this.filterCategory || expense.category === this.filterCategory) &&
+            (!this.startDate || expense.date >= this.startDate) &&
+            (!this.endDate || expense.date <= this.endDate);
+        });
+      }
+      
     },
 
     filteredIncomes() {
+     if(this.filterCategory === 'All'){
       return this.incomes.filter(income => {
         const incomeDate = new Date(income.date);
         const startDate = new Date(this.startDate);
@@ -230,6 +252,7 @@ const app = Vue.createApp({
         return (!this.startDate || incomeDate >= startDate) &&
           (!this.endDate || incomeDate <= endDate);
       });
+     }
     },
 
     getCategory() {
@@ -250,36 +273,35 @@ const app = Vue.createApp({
         precentage: 0
       }
 
-      let totalFood = 0;
-      let totalRent = 0;
-      let totalTransport = 0;
-      let totalExpense = 0;
+      let totalFood = this.getFoodExpenses();
+      let totalRent = this.getRentExpenses();
+      let totalTransport = this.getTransportExpenses();
+      let totalExpense = this.displayAllExpense();
       let categories = [];
 
-      this.expenses.forEach(expense => {
-          if(expense.category === 'Food'){
-            totalFood += expense.expense;
-          }
-          else if (expense.category === 'Rent'){
-              totalRent += expense.expense
-          }
-          else {
-            totalTransport += expense.expense
-          }
-      });
+      // this.expenses.forEach(expense => {
+      //     if(expense.category === 'Food'){
+      //       return
+      //     }
+      //     else if (expense.category === 'Rent'){
+      //         totalRent = totalRent + expense.expense
+      //     }
+      //     else {
+      //       totalTransport = totalTransport + expense.expense
+      //     }
+      // });
 
-      this.expenses.forEach(expense => {
-          totalExpense += expense.expense
-      });
+      // this.expenses.forEach(expense => {
+      //     totalExpense += expense.expense
+      // });
 
-      foodObj.precentage = (totalFood / totalExpense) * 100;
-      foodObj.precentage.toFixed(0);
+      foodObj.precentage = Math.round((totalFood / totalExpense) * 100);
+      foodObj.precentage.toFixed(2);
 
-      rentObj.precentage = (totalRent / totalExpense) * 100;
-      rentObj.precentage.toFixed(0);
+      rentObj.precentage = Math.round((totalRent / totalExpense) * 100);
+      rentObj.precentage.toFixed(2);
 
-      transportObj.precentage = (totalTransport / totalExpense) * 100;
-      transportObj.precentage.toFixed(0);
+      transportObj.precentage = Math.round((totalTransport / totalExpense) * 100);
 
       categories.push(foodObj, rentObj, transportObj);
 
