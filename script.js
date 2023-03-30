@@ -256,22 +256,21 @@ const app = Vue.createApp({
     },
 
     getCategory() {
-
       let foodObj = {
         name: 'Food',
         color: '#4CAF50',
-        precentage: 0
-      }
+        percentage: 0
+      };
       let rentObj = {
         name: 'Rent',
         color: '#00BCD4',
-        precentage: 0
-      }
+        percentage: 0
+      };
       let transportObj = {
         name: 'Transport',
         color: '#E91E63',
-        precentage: 0
-      }
+        percentage: 0
+      };
 
       let totalFood = this.getFoodExpenses();
       let totalRent = this.getRentExpenses();
@@ -279,27 +278,12 @@ const app = Vue.createApp({
       let totalExpense = this.displayAllExpense();
       let categories = [];
 
-      // this.expenses.forEach(expense => {
-      //     if(expense.category === 'Food'){
-      //       return
-      //     }
-      //     else if (expense.category === 'Rent'){
-      //         totalRent = totalRent + expense.expense
-      //     }
-      //     else {
-      //       totalTransport = totalTransport + expense.expense
-      //     }
-      // });
 
-      // this.expenses.forEach(expense => {
-      //     totalExpense += expense.expense
-      // });
+      foodObj.percentage = Math.round((totalFood / totalExpense) * 100);
+      foodObj.percentage.toFixed(2);
 
-      foodObj.precentage = Math.round((totalFood / totalExpense) * 100);
-      foodObj.precentage.toFixed(2);
-
-      rentObj.precentage = Math.round((totalRent / totalExpense) * 100);
-      rentObj.precentage.toFixed(2);
+      rentObj.percentage = Math.round((totalRent / totalExpense) * 100);
+      rentObj.percentage.toFixed(2);
 
       transportObj.precentage = Math.round((totalTransport / totalExpense) * 100);
 
@@ -307,6 +291,7 @@ const app = Vue.createApp({
 
       return categories;
     },
+
   },
   mounted() {
     if (window.localStorage.getItem('incomes')) {
