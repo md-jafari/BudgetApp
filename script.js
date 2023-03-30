@@ -285,7 +285,7 @@ const app = Vue.createApp({
       rentObj.percentage = Math.round((totalRent / totalExpense) * 100);
       rentObj.percentage.toFixed(2);
 
-      transportObj.precentage = Math.round((totalTransport / totalExpense) * 100);
+      transportObj.percentage = Math.round((totalTransport / totalExpense) * 100);
 
       categories.push(foodObj, rentObj, transportObj);
 
