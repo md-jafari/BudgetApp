@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,44 +12,33 @@
     <script src="https://unpkg.com/vue@next"></script>
     <script src="script.js" defer></script>
 </head>
-
 <body>
     <header>
         <h1>Budget Tracker</h1>
     </header>
-
     <main>
         <div id="app">
-
             <div class="input-container">
-
                 <form @submit.prevent="addIncome" class="budget-form">
                     <h2>Income</h2>
-
                     <input type="text" id="income-input" v-model="income" placeholder="Enter Your Income" required>
                     <input type="date" id="income-date" v-model="date" required>
                     <button type="submit">Save Income</button>
                 </form>
-
                 <form @submit.prevent="addExpense" class="expense-form">
                     <h2>Expense</h2>
-
                     <input type="text" id="title-input" v-model="title" placeholder="Enter title" required>
                     <input type="number" id="expense-input" v-model="expense" placeholder="Enter Amount" required>
                     <input type="date" id="expense-date" v-model="date" required>
-
                     <select name="category" id="category-input" v-model="category">
                         <option value="" disabled selected hidden>choose a category</option>
                         <option>Food</option>
                         <option>Rent</option>
                         <option>Transport</option>
                     </select>
-
                     <button type="submit" id="submitExpense">Save Expense</button>
-
                 </form>
             </div>
-
             <form class="net-container">
                 <div class="net-text-container">
                     <p id="income-result">Income: <span>{{displayAllIncome()}}</span></p>
@@ -64,7 +52,6 @@
 
                 </div>
             </form>
-
             <div class="all" v-if="showAll">
                 <ul>
                     <li v-for="income in incomes">
@@ -86,38 +73,27 @@
 
                             <p>
                                 Expense: <span id="expense-result">{{expense.expense}}</span>
-                                
                             </p>
-                                
                             <p>
                                 <span id="title-result">{{expense.title}}</span>
                             </p>
-
                             <p>
                                 <span id="date-result">{{expense.date}}</span>
                             </p>
-
                             <p>
                                 <span id="category-result">{{expense.category}}</span>
                             </p>
-
                         </section>
-
                         <button id="delete-button" @click="deleteExpense(index)">❌</button>
-
                     </li>
                 </ul>
             </div>
-            
             <div class="filter" v-if="showFilter">
-
                 <form class="filter-container">
                     <label for="start-date">start: </label>
                     <input type="date" v-model="startDate">
-
                     <label for="end-date">end: </label>
                     <input type="date" v-model="endDate">
-
                     <select name="category" id="gategory" v-model="filterCategory">
                         <option value="" disabled selected hidden>Choose a category</option>
                         <option >All</option>
@@ -127,7 +103,6 @@
                     </select>
                     <button type="button" @click="toggleFilterList">Search</button>
                 </form>
-                
                 <div class="filter-list" v-if="showFilterList">
                     <ul>
                         <li v-for="(income, index) in filteredIncomes">
@@ -139,7 +114,6 @@
                                 <span>{{income.date}}</span>
                             </p>
                             </section>
-
                             <button type="button" id="delete-button" @click="deleteIncome()">❌</button>
 
                         </li>
@@ -150,7 +124,6 @@
                                 <p>
                                     Expense: <span>{{expense.expense}}</span>
                                 </p>
-                                    
                                 <p>
                                     <span>{{expense.title}}</span>
                                 </p>
@@ -161,46 +134,32 @@
                                     <span>{{expense.category}}</span>
                                 </p>
                             </section>
-                            
                             <button type="button" id="delete-button" @click="deleteExpense()">❌</button>
-
                         </li>
                     </ul>
                 </div>
             </div>
-
                <div class="diagram-container">
-
                 <div class="diagram" ><!-- Cannot read properties of undefined -->
-               
                     <canvas id="canvasStyle" ref="canvas"></canvas><!--v-if doenst work with canvas -->
                 </div>
-
                 <div class="svg-container" v-for="category in  getCategory">
                     <svg width="50" height="50">
                         <circle
-                        
                             :cx="0 * 20 + 10"
                             :cy="0 * 20 + 10"
                             r="10"
                             :style="{fill: category.color}"/>
                     </svg>
-
                     <p> {{category.name}}:  {{category.percentage}}  %</p>
-
                 </div>
                </div>
-            
-
             <footer>
                 <p>
                     © 2023 Jafari & Abdi. All rights reserved.
                 </p>
             </footer>
-
-
         </div>
     </main>
 </body>
-
 </html>
